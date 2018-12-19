@@ -1,0 +1,27 @@
+apply plugin: 'java-library'
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'groovy'
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation gradleApi()
+    implementation localGroovy()
+}
+
+
+
+
+apply plugin: 'maven'
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.groupId = 'com.guosen.implePlugin'
+            pom.artifactId = 'guosen-plugin'
+            pom.version = 1.6
+            //本地的Maven地址设置为D:/repos
+            repository(url: uri('../repo'))
+        }
+    }
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"

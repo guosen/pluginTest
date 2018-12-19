@@ -1,0 +1,32 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+  apply plugin: 'guosen-plugin'
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+        maven {
+            //cooker-plugin 所在的仓库
+            //这里是发布在本地文件夹了
+            url uri('./repo')
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+      classpath 'com.guosen.implePlugin:guosen-plugin:1.6'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
